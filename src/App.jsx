@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemListContainer from './componentes/ItemListContainer';
+import NavBar from './componentes/NavBar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <NavBar />
+      <ItemListContainer saludo="¡Bienvenidos a Tech Solutions!" />
+
+      <div className="container my-5">
+        <h2 className="text-center mb-5 fw-bold">Somos la mejor tienda online de elementos electrónicos recuperados!</h2>
+
+        <section className="bg-light p-4 mb-4 rounded border-start border-4 border-primary shadow-sm">
+          <h3 className="text-primary">¿Quiénes somos?</h3>
+          <p className="text-muted fs-6">
+            En Tech Solutions nos especializamos en la venta de productos electrónicos recuperados. 
+            Todos nuestros equipos son rigurosamente testeados y reacondicionados por técnicos calificados, garantizando calidad a bajo costo.
+          </p>
+        </section>
+
+        <section className="bg-light p-4 mb-4 rounded border-start border-4 border-success shadow-sm">
+          <h3 className="text-success">¿Cómo comprar?</h3>
+          <p className="text-muted fs-6">
+            Elegí el producto que más te guste, hacé clic en “Agregar al carrito” y completá los pasos para finalizar tu compra. 
+            Podés optar por envío a domicilio o retiro en nuestro local.
+          </p>
+        </section>
+
+        <section className="bg-light p-4 mb-4 rounded border-start border-4 border-warning shadow-sm">
+          <h3 className="text-warning">Formas de pago</h3>
+          <ul className="text-muted fs-6">
+            <li>Tarjetas de crédito y débito (Visa, Mastercard, etc.)</li>
+            <li>Transferencia bancaria</li>
+            <li>MercadoPago</li>
+          </ul>
+        </section>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
