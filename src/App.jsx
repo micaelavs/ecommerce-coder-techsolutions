@@ -31,7 +31,7 @@ function App() {
         <section className="bg-light p-4 mb-4 rounded border-start border-4 border-warning shadow-sm">
           <h3 className="text-warning">Formas de pago</h3>
           <ul className="text-muted fs-6">
-            <li>Tarjetas de crédito y débito (Visa, Mastercard, etc.)</li>
+            <li>Tarjetas de crédito y débito (Visa, Mastercard y American Express.)</li>
             <li>Transferencia bancaria</li>
             <li>MercadoPago</li>
           </ul>

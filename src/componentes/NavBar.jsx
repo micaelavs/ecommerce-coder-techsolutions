@@ -7,7 +7,7 @@ import logo from '../assets/logo.jpg';
 
 function NavBar() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-white">
       <Container>
         <Navbar.Brand href="#home" className="d-flex align-items-center"> <img
           src={logo}

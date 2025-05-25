@@ -45,6 +45,11 @@
   padding: 0; 
   box-sizing:border-box ;
 }
+body {
+  background-color: #b8d8ba !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
 
 /*.mi-boton{
   background-color: coral;
