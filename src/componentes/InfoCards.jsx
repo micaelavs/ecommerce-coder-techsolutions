@@ -1,8 +1,9 @@
 const InfoCards = () => {
   return (
     <div className="container my-5">
+    <h1 className="text-center fw-bold mb-4 text-success">Tech Solutions</h1>
       <h2 className="text-center mb-5 fw-bold">
-        Somos la mejor tienda online de elementos electrónicos recuperados!
+        ¡Somos la mejor tienda online de productos electrónicos recuperados!
       </h2>
 
       <section className="bg-light p-4 mb-4 rounded border-start border-4 border-primary shadow-sm">

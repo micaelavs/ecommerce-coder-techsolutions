@@ -8,8 +8,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <ItemListContainer saludo="¡Bienvenidos a Tech Solutions!" />
       <InfoCards />
+      <ItemListContainer saludo="¡Bienvenidos a nuestro catálogo!" />
+      
     </>
   );
 }

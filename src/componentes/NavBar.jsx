@@ -23,7 +23,7 @@ function NavBar() {
             <NavDropdown title="Productos" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Novedades</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.3">Promos</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Promociones</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Más solicitados
