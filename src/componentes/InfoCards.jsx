@@ -1,7 +1,7 @@
 const InfoCards = () => {
   return (
-    <div className="container my-5">
-    <h1 className="text-center fw-bold mb-4 text-success">Tech Solutions</h1>
+    <div className="container my-6">
+    <h1 className="text-center fw-bold mt-5 mb-4 text-success">Tech Solutions</h1>
       <h2 className="text-center mb-5 fw-bold">
         ¡Somos la mejor tienda online de productos electrónicos recuperados!
       </h2>
