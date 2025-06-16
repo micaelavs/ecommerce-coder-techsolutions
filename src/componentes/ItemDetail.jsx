@@ -1,20 +1,36 @@
 import React from 'react';
+import { useState } from 'react';
+import { Alert } from 'react-bootstrap';
+import ItemCount from './ItemCount'
 
 const ItemDetail = ({ detalle }) => {
+ const [mensaje, setMensaje] = useState('');
+
   if (!detalle) return null;
+
+    const onAdd = (cantidad)=>{
+    //alert(`Agregaste ${cantidad} de items`)
+    setMensaje(`Agregaste ${cantidad} item${cantidad > 1 ? 's' : ''} al carrito`);
+  }
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '1.5rem' }}>
       <div style={{
-        maxWidth: '480px', // ✅ reducido de 600px
+        maxWidth: '480px', 
         width: '100%',
         border: '1px solid #ddd',
         borderRadius: '10px',
-        padding: '1rem', // ✅ menos padding
+        padding: '1rem', 
         boxShadow: '0 3px 8px rgba(0,0,0,0.1)',
         textAlign: 'center',
         backgroundColor: '#fff'
       }}>
+
+        {mensaje && (
+          <Alert variant="success" onClose={() => setMensaje('')} dismissible>
+            {mensaje}
+          </Alert>
+        )}
         <h3 style={{ color: '#007b5e', marginBottom: '1rem', fontSize: '1.5rem' }}>
           {detalle.nombre}
         </h3>
@@ -45,6 +61,7 @@ const ItemDetail = ({ detalle }) => {
         <p style={{ color: detalle.stock > 0 ? 'green' : 'red', fontWeight: '500' }}>
           Stock disponible: {detalle.stock}
         </p>
+        <ItemCount stock={detalle.stock} onAdd={onAdd}/>
       </div>
     </div>
   );

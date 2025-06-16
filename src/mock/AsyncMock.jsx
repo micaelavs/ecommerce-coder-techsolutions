@@ -6,7 +6,7 @@ const productos=[
         stock:5,
         precio:373000,
         categoria:'novedades',
-        img:'../pc_Intel.png'
+        img:'/productos/pc_Intel.png'
     },
     {
         id:'02',
@@ -15,7 +15,7 @@ const productos=[
         stock:3,
         precio:200000,
         categoria:'promociones',
-        img:'../samsung_galaxy.png'
+        img:'/productos/samsung_galaxy.png'
     },
      {
         id:'03',
@@ -24,7 +24,7 @@ const productos=[
         stock:10,
         precio:15000,
         categoria:'mas solicitados',
-        img:'../mouse_genius.png'
+        img:'/productos/mouse_genius.png'
     },
     {
         id:'04',
@@ -33,25 +33,25 @@ const productos=[
         stock:12,
         precio:18000,
         categoria:'mas solicitados',
-        img:'../monitor_lg.png'
+        img:'/productos/monitor_lg.png'
     },
     {
         id: '05',
-        nombre: 'Auriculares Bluetooth JBL',
+        nombre: 'Auriculares Bl. JBL Reacond.',
         descripcion: 'Auriculares inalámbricos JBL Tune 510BT. Sonido Pure Bass, hasta 40 horas de batería, conexión multipunto, diseño liviano y plegable.',
         stock: 8,
         precio: 32000,
         categoria: 'novedades',
-        img: '../jbl_auriculares.png'
+        img: '/productos/jbl_auriculares.png'
     },
     {
         id: '06',
-        nombre: 'Notebook HP 14"',
+        nombre: 'Notebook HP 14" Reacond.',
         descripcion: 'Notebook HP 14" con procesador AMD Ryzen 5, 8GB RAM, SSD de 256GB. Windows 11. Ideal para estudio y oficina.',
         stock: 4,
         precio: 520000,
-        categoria: 'promociones',
-        img: '../notebook_hp.png'
+        categoria: 'hot sale',
+        img: '/productos/notebook_hp.png'
     },
     {
         id: '07',
@@ -60,16 +60,16 @@ const productos=[
         stock: 6,
         precio: 145000,
         categoria: 'mas solicitados',
-        img: '../smart_tv_philips.png'
+        img: '/productos/smart_tv_philips.png'
     },
     {
         id: '08',
-        nombre: 'Tablet Lenovo M10',
+        nombre: 'Tablet Lenovo M10 Reac.',
         descripcion: 'Tablet Lenovo M10 10.1" HD, 4GB RAM, 64GB almacenamiento. Android 11, ideal para multimedia y lectura.',
         stock: 9,
         precio: 95000,
         categoria: 'novedades',
-        img: '../tablet_lenovo.png'
+        img: '/productos/tablet_lenovo.png'
     },
     {
         id: '09',
@@ -78,7 +78,7 @@ const productos=[
         stock: 7,
         precio: 73000,
         categoria: 'promociones',
-        img: '../impresora_hp.png'
+        img: '/productos/impresora_hp.png'
     },
     {
         id: '10',
@@ -87,7 +87,7 @@ const productos=[
         stock: 15,
         precio: 28000,
         categoria: 'mas solicitados',
-        img: '../teclado_redragon.png'
+        img: '/productos/teclado_redragon.png'
     },
     {
         id: '11',
@@ -96,7 +96,7 @@ const productos=[
         stock: 5,
         precio: 85000,
         categoria: 'novedades',
-        img: '../disco_externo_wd.png'
+        img: '/productos/disco_externo_wd.png'
     },
     {
         id: '12',
@@ -105,7 +105,7 @@ const productos=[
         stock: 11,
         precio: 21000,
         categoria: 'promociones',
-        img: '../logitech_c270.png'
+        img: '/productos/logitech_c270.png'
     }
     
 ]
