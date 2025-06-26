@@ -1,16 +1,23 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { Alert } from 'react-bootstrap';
 import ItemCount from './ItemCount'
+import { CartContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 
 const ItemDetail = ({ detalle }) => {
- const [mensaje, setMensaje] = useState('');
+  const [mensaje, setMensaje] = useState('');
+  const {addItem} = useContext(CartContext);
+  //comprar
+  const [purchase, setPurchase]= useState(false);
 
   if (!detalle) return null;
 
     const onAdd = (cantidad)=>{
     //alert(`Agregaste ${cantidad} de items`)
     setMensaje(`Agregaste ${cantidad} item${cantidad > 1 ? 's' : ''} al carrito`);
+    addItem(detalle, cantidad)
+    setPurchase(true)
   }
 
   return (
@@ -61,7 +68,7 @@ const ItemDetail = ({ detalle }) => {
         <p style={{ color: detalle.stock > 0 ? 'green' : 'red', fontWeight: '500' }}>
           Stock disponible: {detalle.stock}
         </p>
-        <ItemCount stock={detalle.stock} onAdd={onAdd}/>
+        {purchase ? <Link className='btn btn-dark' to='/cart'> Ir al carrito</Link> :<ItemCount stock={detalle.stock} onAdd={onAdd}/>}
       </div>
     </div>
   );
