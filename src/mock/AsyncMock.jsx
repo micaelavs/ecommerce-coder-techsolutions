@@ -2,7 +2,7 @@ const productos=[
     {
         id:'01',
         nombre:'Pc Core i7 Reacondicionado',
-        descripcion:'Pc Intel Core i7 16Gb SSD 480Gb. Línea del procesador: Core i7. Marca: Intel. Disco Duro: 480 GB. RAM 16 GB. Windows 10. ',
+        descripcion:'Pc Intel Core i7 16Gb SSD 480Gb. Línea del procesador: Core i7. Marca: Intel. Disco Duro: 480 GB. RAM 16 GB. Windows 10.',
         stock:5,
         precio:373000,
         categoria:'novedades',
