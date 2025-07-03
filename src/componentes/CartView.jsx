@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { Link } from 'react-router-dom'
 
 const CartView = () => {
-  const { cart, clear, removeItem } = useContext(CartContext);
+  const { cart, clear, removeItem, cartTotal } = useContext(CartContext);
 
   return (
     <div style={{ maxWidth: '800px', margin: '2rem auto' }}>
@@ -37,10 +38,10 @@ const CartView = () => {
         <hr />
 
         <div className="mt-4" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span className="fw-bold">Total a pagar: $</span>
+          <span className="fw-bold">Total a pagar: ${cartTotal()}</span>
           <div>
             <button className='btn btn-danger me-2' onClick={clear}>Vaciar carrito</button>
-            <button className='btn btn-success'>Terminar Compra</button>
+            <Link className='btn btn-success' to='/checkout'>Terminar Compra</Link>
           </div>
         </div>
       </div>

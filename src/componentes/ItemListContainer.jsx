@@ -1,16 +1,42 @@
 import { useEffect, useState } from "react"
-import { getProducts } from "../mock/AsyncMock"
+import { getProducts, productos } from "../mock/AsyncMock"
 import ItemList from "./ItemList"
 import { useParams } from "react-router-dom"
 import LoaderComponent from "./LoaderComponent"
 import InfoCards from "./InfoCards"; 
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
+import { db } from "../service/firebase"
 
 const ItemListContainer = (props) => {
   const[data, setData]= useState([])
   const {categoryId} = useParams()
   const [loading, setLoading]= useState(false)
 
-      useEffect(()=>{
+    //firebase
+    useEffect(()=>{
+        setLoading(true)
+        //conexion 
+        const productsCollection = categoryId 
+        ? query(collection(db,"productos"), where("categoria", "==", categoryId))
+        : collection(db,"productos")
+        
+        //datos
+        getDocs(productsCollection)
+        .then((res)=>{
+            const list = res.docs.map((doc)=>{
+                return{
+                    id:doc.id,
+                    ...doc.data()
+                }
+            })
+           setData(list)
+        })
+        .catch((error)=> console.log(error))
+        .finally(()=> setLoading(false))
+    },[categoryId])
+
+      /*comentamos esto porque era para el mock*/
+     /* useEffect(()=>{
           setLoading(true)
           getProducts()
           .then((respuesta)=> {
@@ -23,9 +49,16 @@ const ItemListContainer = (props) => {
           .catch((error)=> console.log(error))
           .finally(()=> setLoading(false))
       },[categoryId])
-
+    */
+    //la usamos una sola vez para subir los prod
+    /*const subirData = () => {
+      console.log('click!')
+      const collectionAgregar = collection(db, "productos")
+      productos.map((prod) => addDoc(collectionAgregar, prod))
+    }*/
  return (
   <>
+    {/*<button onClick={subirData}>Subir productos</button> */}
     {
       loading ? <LoaderComponent/> : 
       <div>

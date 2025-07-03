@@ -5,14 +5,13 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 const CartWidget = () => {
-    const {cart}= useContext(CartContext)
-    console.log(cart)
+    const {cartQuantity}= useContext(CartContext)
 
     return(
-         <Link to="/cart">
+         <Link to="/cart" className="text-dark text-decoration-none">
             <div>
                 < TiShoppingCart fontSize={'2rem'} />
-                <Badge bg="danger">{5}</Badge>
+                <Badge bg="danger">{cartQuantity()}</Badge>
             </div>
         </Link>
     )
