@@ -8,7 +8,7 @@ De esta forma promovemos la reutilización y el consumo circular de estos elemen
 ### Características principales ✨
 
 - Permite navegar por productos y distintas categorías de productos.
-- Carrito de compras para adquirir los productos reacondicionados..
+- Carrito de compras para adquirir los productos reacondicionados.
 - Formularios validados para órdenes de productos.
 - Base de datos en Firebase para gestionar los productos.
 - Alertas visuales personalizadas con SweetAlert2.
