@@ -16,7 +16,7 @@ De esta forma promovemos la reutilización y el consumo circular de estos elemen
 ### Instalación ⚙️
 
 1. Clone el repositorio.
-2. Muevase a la carpeta creada con el comando `ecommerce-coder-techsolutions`
+2. Muevase a la carpeta creada con el comando `cd ecommerce-coder-techsolutions`
 3. Ejecute el comando `npm install` para instalar dependencias y crear la carpeta node_modules
 4. Ejecute el comando `npm run dev` para correr el proyecto en el servidor local.
 
