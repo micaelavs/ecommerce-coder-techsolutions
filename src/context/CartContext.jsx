@@ -7,9 +7,15 @@ export const CartContext = createContext()
 export const CartProvider = ({children}) => {
     
     const [cart, setCart]= useState([])
+    const [productStocks, setProductStocks] = useState({});
 
     const addItem = (item, cantidad) =>{
-        
+          //descuento el stock local
+        setProductStocks(prev => ({
+            ...prev,
+            [item.id]: (prev[item.id] ?? item.stock) - cantidad
+        }));
+
         if(isInCart(item.id)){
             const carritoActualizado = cart.map((prod)=>{
                 if(item.id === prod.id){
@@ -21,7 +27,7 @@ export const CartProvider = ({children}) => {
             setCart(carritoActualizado)
 
         }else{
-            //dejas lo que esta en el carrito y añado el item con su cant
+            //dejo lo que esta en el carrito y añado el item con su cant
             setCart([...cart, {...item, quantity:cantidad}])
         }
    
@@ -29,11 +35,27 @@ export const CartProvider = ({children}) => {
 
     //filtra los que sean distinto a ese prod, es decir los deja en la lista
     const removeItem = (id)=>{
+         //restaurar stock local
+        const prod = cart.find(p => p.id === id);
+        if (prod) {
+            setProductStocks(prev => ({
+                ...prev,
+                [id]: (prev[id] ?? prod.stock) + prod.quantity
+            }));
+        }
+
         setCart(cart.filter((prod)=> prod.id !== id))
     }
 
     //setea carrito en [] 
     const clear = () =>{
+        //devolver stock local de todos los productos
+        cart.forEach(prod => {
+            setProductStocks(prev => ({
+                ...prev,
+                [prod.id]: (prev[prod.id] ?? prod.stock) + prod.quantity
+            }));
+        });
         setCart([])
     }
 
@@ -51,7 +73,7 @@ export const CartProvider = ({children}) => {
         return cart.reduce((acc, prod) => acc + prod.quantity * prod.precio, 0);
     };
     return(
-        <CartContext.Provider value={{cart, addItem, removeItem, clear, cartQuantity, cartTotal}}>
+        <CartContext.Provider value={{cart, addItem, removeItem, clear, cartQuantity, cartTotal,productStocks }}>
             {children}
         </CartContext.Provider>
     )

@@ -1,24 +1,32 @@
 import React from 'react';
 import { useState,useContext } from 'react';
-import { Alert } from 'react-bootstrap';
+//import { Alert } from 'react-bootstrap';
 import ItemCount from './ItemCount'
 import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 const ItemDetail = ({ detalle }) => {
-  const [mensaje, setMensaje] = useState('');
-  const {addItem} = useContext(CartContext);
+  const {addItem, productStocks } = useContext(CartContext);
   //comprar
   const [purchase, setPurchase]= useState(false);
-
+  
   if (!detalle) return null;
 
-    const onAdd = (cantidad)=>{
-    //alert(`Agregaste ${cantidad} de items`)
-    setMensaje(`Agregaste ${cantidad} item${cantidad > 1 ? 's' : ''} al carrito`);
-    addItem(detalle, cantidad)
-    setPurchase(true)
-  }
+  //para actualizar el stock
+  const stockDisponible = productStocks[detalle.id] ?? detalle.stock;
+
+  const onAdd = (cantidad)=>{
+      addItem(detalle, cantidad)
+      setPurchase(true)
+      Swal.fire({
+        icon: 'success',
+        title: '¡Producto agregado!',
+        text: `Agregaste ${cantidad} item${cantidad > 1 ? 's' : ''} al carrito`,
+        showConfirmButton: false,
+        timer: 2000
+    });
+  };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', padding: '1.5rem' }}>
@@ -33,11 +41,6 @@ const ItemDetail = ({ detalle }) => {
         backgroundColor: '#fff'
       }}>
 
-        {mensaje && (
-          <Alert variant="success" onClose={() => setMensaje('')} dismissible>
-            {mensaje}
-          </Alert>
-        )}
         <h3 style={{ color: '#007b5e', marginBottom: '1rem', fontSize: '1.5rem' }}>
           {detalle.nombre}
         </h3>
@@ -66,9 +69,9 @@ const ItemDetail = ({ detalle }) => {
         </p>
 
         <p style={{ color: detalle.stock > 0 ? 'green' : 'red', fontWeight: '500' }}>
-          Stock disponible: {detalle.stock}
+          Stock disponible: {stockDisponible}
         </p>
-        {purchase ? <Link className='btn btn-dark' to='/cart'> Ir al carrito</Link> :<ItemCount stock={detalle.stock} onAdd={onAdd}/>}
+        {purchase ? <Link className='btn btn-dark' to='/cart'> Ir al carrito</Link> :<ItemCount stock={stockDisponible} onAdd={onAdd}/>}
       </div>
     </div>
   );

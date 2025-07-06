@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getProducts, productos } from "../mock/AsyncMock"
 import ItemList from "./ItemList"
+import ErrorPage from './ErrorPage';
 import { useParams } from "react-router-dom"
 import LoaderComponent from "./LoaderComponent"
 import InfoCards from "./InfoCards"; 
@@ -8,9 +9,9 @@ import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../service/firebase"
 
 const ItemListContainer = (props) => {
-  const[data, setData]= useState([])
-  const {categoryId} = useParams()
-  const [loading, setLoading]= useState(false)
+const[data, setData]= useState([])
+const {categoryId} = useParams()
+const [loading, setLoading]= useState(false)
 
     //firebase
     useEffect(()=>{
@@ -56,6 +57,12 @@ const ItemListContainer = (props) => {
       const collectionAgregar = collection(db, "productos")
       productos.map((prod) => addDoc(collectionAgregar, prod))
     }*/
+
+  //Si la categoría no existe o está vacía
+  if (!loading && categoryId && !data.length) {
+    return <ErrorPage/>;
+  }
+
  return (
   <>
     {/*<button onClick={subirData}>Subir productos</button> */}

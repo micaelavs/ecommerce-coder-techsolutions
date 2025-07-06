@@ -3,7 +3,7 @@ import Item from './Item';
 
 const ItemList = ({ data }) => {
   return (
-    <div className="container my-6"> {/* Igual que InfoCards */}
+    <div className="container my-6">
       <div
         style={{
           display: 'flex',
